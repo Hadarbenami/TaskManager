@@ -1,0 +1,19 @@
+<div class="task-list">
+    <h1>My Tasks</h1>
+    <div class="task" *ngFor="let task of tasks">
+      <div class="priority-indicator"
+           [ngClass]="{
+             'priority-high': task.priority === 'High',
+             'priority-medium': task.priority === 'Medium',
+             'priority-low': task.priority === 'Low'
+           }"></div>
+      <div class="task-content">
+        <div class="task-title">{{ task.title }}</div>
+        <div class="task-description">{{ task.description }}</div>
+        <div class="task-date">Created At: {{ task.createdAt | date }}</div>
+        <button class="delete-button" (click)="deleteTask(task.id)">Delete</button>
+      </div>
+    </div>
+    <button class="add-task-button" (click)="navigateToAddTask()">Add New Task</button>
+  </div>
+  

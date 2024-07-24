@@ -1,0 +1,49 @@
+<div class="add-task-container">
+    <h2>Add Task</h2>
+    <form (ngSubmit)="onSubmit()" #taskForm="ngForm" class="add-task-form">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          [(ngModel)]="title"
+          required
+          #titleInput="ngModel"
+        />
+        <div *ngIf="titleInput.invalid && (titleInput.dirty || titleInput.touched)" class="error-message">
+          * Title is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea
+          id="description"
+          name="description"
+          [(ngModel)]="description"
+          
+          #descriptionInput="ngModel"
+        ></textarea>
+        
+      </div>
+      <div class="form-group">
+        <label for="priority">Priority:</label>
+        <select
+          id="priority"
+          name="priority"
+          [(ngModel)]="priority"
+          required
+          #priorityInput="ngModel"
+        >
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+        <div *ngIf="priorityInput.invalid && (priorityInput.dirty || priorityInput.touched)" class="error-message">
+          Priority is required.
+        </div>
+      </div>
+      <button type="submit" [disabled]="taskForm.invalid" class="add-task-button">Add Task</button>
+    </form>
+  </div>
+  
